@@ -1,0 +1,598 @@
+﻿/* Here I am setting up the fonts I will be using for this webpage. */
+@font-face {
+/*Here I am naming my font so that I can refernce it*/
+font-family: 'LemonMilk';
+/*Here I am linking my font file so that when I refernce it it knows what the font looks like*/
+src: url('lemon_milk/LEMONMILK-Light.otf') format('opentype');
+/*these tags let the code know that the style and weight should be normal rather than bold or italic*/
+font-weight: normal; 
+font-style: normal; 
+}
+@font-face {
+/*Here I am naming my font so that I can refernce it*/
+font-family: 'Belgiano';
+/*Here I am linking my font file so that when I refernce it it knows what the font looks like*/
+src: url('belgiano_serif/Belgiano Serif 2.ttf') format('truetype');
+/*these tags let the code know that the style and weight should be normal rather than bold or italic*/
+font-weight: normal; 
+font-style: normal; 
+}
+
+/* Here I am making sure padding and borders do not mess up element sizing */
+*{
+    box-sizing: border-box;
+}
+
+/* Here I am setting the base background color for the entire page */
+html{
+    background-color: #0A0A0A;
+}
+body{
+    margin: 0;
+    background-color: #0A0A0A;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Here I am removing default spacing so sections can touch the edge of the screen */
+body{
+    margin: 0;
+}
+
+/* Here I am making images and videos scale to the screen instead of overflowing */
+img, video{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Here I am defining a global button style so it works everywhere */
+.Button{
+    border: solid 1px white;
+    font-size: 1rem;
+    color: white;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'LemonMilk', serif;
+    transition: background-color 0.3s, transform 0.15s;
+    padding:10px 18px;
+    cursor:pointer;
+    display: inline-block;
+    white-space: nowrap;
+}
+.Button:hover{
+    background-color: #1d1d1d;
+    transform: translateY(-1px);
+}
+
+/* NAVIGATION BAR */
+/* Here I am making the nav transparent at the top of the page */
+nav{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+
+    background-color: transparent;
+
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    transition: background-color 0.3s ease;
+}
+
+/* Hide hamburger on desktop */
+#Hamburger{
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Mobile styles */
+@media (max-width: 850px){
+
+    /* Show hamburger */
+    #Hamburger{
+        display: block;
+        position: relative;
+        z-index: 1001;
+    }
+
+    /* Hide nav links initially */
+    #NavLinks{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        background: #0A0A0A;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    /* When open */
+    #NavLinks.active{
+        transform: translateY(0);
+    }
+
+    #NavLinks a{
+        font-size: 1.8rem;
+    }
+}
+
+/* Here I am preventing the nav from dropping to a second line on small screens */
+@media (max-width: 520px){
+    nav{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .Logo{
+        width: 110px;
+        padding: 8px;
+    }
+
+    .Button{
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        margin: 4px;
+    }
+}
+
+/* Here I am defining the scrolled state of the nav */
+nav.scrolled{
+    background-color: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+/* Here I am making sure the logo stays a normal size */
+.Logo{
+    width: clamp(155px, 16vw, 250px);
+    height: auto;
+    margin-right:auto;
+    padding: 10px;
+}
+
+/* HEADER */
+/* Here I am making ONLY the home hero fill the full screen and center the text */
+#Hero{
+    background-color: #0A0A0A;
+    color: white;
+    font-family: 'LemonMilk', serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-height: 100vh;
+
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* Here I am making the title scale based on screen size (HOME HERO ONLY) */
+#Hero h1{
+    font-size: clamp(2.3rem, 6vw, 5rem);
+    margin: 0;
+    color: rgba(210, 230, 255, .9);
+    mix-blend-mode: normal;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+}
+
+/* Here I am making the subtitle scale and keeping the font you chose (HOME HERO ONLY) */
+#Hero h2 {
+    font-family: 'Belgiano', serif;
+    font-size: clamp(1.3rem, 3.2vw, 2.5rem);
+    margin: 8px 0 16px;
+    font-weight: normal;
+    opacity: .65;
+
+    color: rgba(210, 230, 255, 1);
+    mix-blend-mode: normal;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+}
+
+/* Here I am making your header button stand out (HOME HERO ONLY) */
+#Hero .Button{
+    background-color: rgba(255,255,255,.75) !important;
+    color: rgba(24, 26, 29, 0.85) !important;
+    border: 1px solid rgba(210, 230, 255, 0.35);
+}
+#Hero .Button:hover{
+    background-color: rgba(255, 255, 255, 0.534) !important;
+    border: 1px solid rgba(210, 230, 255, 0.55);
+}
+
+/* Here I am styling the full width About section */
+#HomePage{
+    background-color: #0A0A0A;
+    color: white;
+
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(80px, 8vw, 120px);
+}
+
+/* Here I am creating a centered layout container */
+.HomeContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(30px, 4vw, 60px);
+    align-items: center;
+
+    padding-left: clamp(16px, 4vw, 40px);
+    padding-right: clamp(16px, 4vw, 40px);
+}
+
+/* Here I am stacking the columns on smaller screens */
+@media (max-width: 950px){
+    .HomeContainer{
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    /* Here I am forcing the image to sit under the text */
+    #SelfPhoto{
+        margin-top: 24px;
+    }
+
+    #SelfPhoto img{
+        width: min(520px, 100%);
+    }
+}
+
+#AboutMe h1{
+    font-family: 'LemonMilk', serif;
+    font-size: clamp(1.8rem, 3.3vw, 2.5rem);
+    margin: 0 0 10px;
+}
+#AboutMe p{
+    font-family: 'Belgiano', serif;
+    font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+    opacity: .85;
+    margin: 0 0 14px;
+}
+
+#SelfPhoto img{
+    width: min(600px, 100%);
+    margin: 0 auto;
+}
+
+/* FOOTER */
+footer{
+    text-align: center;
+    background-color: #0A0A0A;
+    color: white;
+    font-family: 'LemonMilk', serif;
+    padding-top: 24px;
+    padding-bottom: 44px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-top: 0px;
+}
+#ContactMe{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#ContactMe h1{
+    margin: 0 0 12px;
+    font-size: clamp(1.4rem, 2.3vw, 2rem);
+}
+
+/* HERO VIDEO BACKGROUND */
+#Hero{
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Here I am placing the video behind everything */
+#HeroVideo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Here I am adding the dark transparent layer */
+.HeroOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+/* Here I am keeping the text above everything */
+.HeroContent{
+    position: relative;
+    z-index: 2;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* Keep hero button styling */
+#Hero .Button{
+    background: #fff;
+    color: #121212;
+    border: none;
+}
+#Hero .Button:hover{
+    background-color: #d8d8d8;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Smooth scrolling + offset for fixed nav */
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px; /* adjust if your nav is taller/shorter */
+}
+
+/* Also ensure the target section accounts for the fixed nav */
+#HomePage{
+    scroll-margin-top: 50px; /* same number as above */
+}
+
+/* Scroll hint button */
+.ScrollHint{
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 4;
+
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 999px;
+
+    background-color: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.ScrollHintIcon{
+    width: 28px;
+    height: 28px;
+    display: block;
+    fill: rgba(210, 230, 255, 0.75);
+    animation: ScrollBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes ScrollBounce{
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/* Optional: hide if the hero is very short */
+@media (max-height: 520px){
+    .ScrollHint{ display: none; }
+}
+
+/* ===============================
+   HOME HERO INTRO ANIMATION (WORKING)
+   Noah -> Major -> Button -> Scroll hint
+================================ */
+
+/* Video fades in */
+#HeroVideo{
+  opacity: 0;
+  animation: heroVideoIn 0.9s ease forwards;
+  animation-delay: 0.05s;
+}
+@keyframes heroVideoIn{
+  to{ opacity: 1; }
+}
+
+/* Start hidden (NO !important so animation can override) */
+#Hero .HeroContent h1,
+#Hero .HeroContent h2,
+#Hero .HeroContent .Button{
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+#Hero .ScrollHint{
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+
+/* Animate in (with final opacity values) */
+#Hero .HeroContent h1{
+  animation: heroH1In 0.55s ease forwards;
+  animation-delay: 0.18s;
+}
+#Hero .HeroContent h2{
+  animation: heroH2In 0.55s ease forwards;
+  animation-delay: 0.32s;
+}
+#Hero .HeroContent .Button{
+  animation: heroBtnIn 0.55s ease forwards;
+  animation-delay: 0.46s;
+}
+#Hero .ScrollHint{
+  animation: heroHintIn 0.55s ease forwards;
+  animation-delay: 0.60s;
+}
+
+@keyframes heroH1In{ to{ opacity: 1;    transform: translateY(0); } }
+@keyframes heroH2In{ to{ opacity: 0.65; transform: translateY(0); } } /* matches your #Hero h2 style */
+@keyframes heroBtnIn{ to{ opacity: 1;    transform: translateY(0); } }
+@keyframes heroHintIn{ to{ opacity: 1; transform: translateX(-50%) translateY(0); }}
+
+@media (prefers-reduced-motion: reduce){
+  #HeroVideo,
+  #Hero .HeroContent h1,
+  #Hero .HeroContent h2,
+  #Hero .HeroContent .Button,
+  #Hero .ScrollHint{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #Hero .HeroContent h2{ opacity: 0.65 !important; }
+}
+
+/* ===== Footer layout ===== */
+
+footer{
+    width: 100%;
+    padding: 45px 0px;
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* center the content inside the full-width footer */
+#ContactMe{
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* tighten spacing */
+#ContactMe h1{
+    margin-bottom: 5px;
+}
+
+#ContactMe .Button{
+    margin-bottom: 0px;
+}
+
+/* "Or connect with me" text */
+.FooterSubtitle{
+    margin: 10px 0px 5px;
+    font-size: 0.95rem;
+    opacity: 0.75;
+}
+
+.FooterSubtitle::before{
+    content: "";
+    display: block;
+    width: 120px;
+    height: 1px;
+    margin: 14px auto 12px;
+    background: rgba(255,255,255,0.18);
+}
+
+/* LinkedIn icon */
+.LinkedInIcon{
+    width: 52px;
+    height: 52px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.15s ease, background-color 0.25s ease;
+}
+
+.LinkedInIcon:hover{
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.06);
+}
+
+.LinkedInIcon img{
+    width: 22px;
+    height: 22px;
+}
+
+.FooterDivider{
+    width: 120px;
+    height: 1px;
+    margin: 18px auto;
+    background: rgba(255,255,255,0.18);
+}
+
+/* ===== Tighter footer spacing ===== */
+
+footer{
+    padding: 34px 20px;
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+#ContactMe{
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* tighten the title */
+#ContactMe h1{
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+}
+
+/* remove extra spacing from the button */
+#ContactMe .Button{
+    margin: 0;
+}
+
+/* divider */
+.FooterDivider{
+    width: 110px;
+    height: 1px;
+    margin: 12px auto;
+    background: rgba(255,255,255,0.14);
+}
+
+/* LinkedIn icon */
+.LinkedInIcon{
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, background-color 0.25s ease;
+}
+
+.LinkedInIcon:hover{
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.06);
+}
+
+.LinkedInIcon img{
+    width: 20px;
+    height: 20px;
+    display: block;
+}

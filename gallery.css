@@ -1,0 +1,347 @@
+﻿/* ===============================
+   GLOBAL
+================================ */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+/* ===============================
+   PAGE HEADER
+================================ */
+.PageHeader{
+  padding-top: 90px;
+  padding-bottom: 28px;
+  padding-left: 14px;
+  padding-right: 14px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.PageHeader::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(1200px 320px at 50% 0%, rgba(210,230,255,0.08), transparent 60%);
+  opacity: 0;
+  animation: glowOn .6s ease-out forwards;
+}
+
+@keyframes glowOn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.HeaderInner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 32px 30px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  background: rgba(18,18,18,0.35);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: headerIn .45s ease forwards;
+  animation-delay: .22s;
+}
+
+@keyframes headerIn{
+  from{opacity:0; transform: translateY(-10px);}
+  to{opacity:1; transform: translateY(0);}
+}
+
+.PageHeader h1{
+  font-family: 'LemonMilk', serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin: 0;
+  color: rgba(210,230,255,0.95);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+}
+
+/* ===============================
+   OBJECTIVES LAYOUT
+================================ */
+#ObjectivesList{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 14px 48px;
+  display: grid;
+  gap: 24px;
+}
+
+.ObjectiveCard{
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(23,23,23,0.58), rgba(12,12,12,0.48));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.30);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: sectionIn .42s ease forwards;
+}
+
+body.intro .ObjectiveCard:nth-child(1){ animation-delay: .46s; }
+body.intro .ObjectiveCard:nth-child(2){ animation-delay: .56s; }
+body.intro .ObjectiveCard:nth-child(3){ animation-delay: .66s; }
+body.intro .ObjectiveCard:nth-child(4){ animation-delay: .76s; }
+body.intro .ObjectiveCard:nth-child(5){ animation-delay: .86s; }
+body.intro .ObjectiveCard:nth-child(6){ animation-delay: .96s; }
+
+@keyframes sectionIn{
+  from{opacity:0; transform: translateY(12px);}
+  to{opacity:1; transform: translateY(0);}
+}
+
+.ObjectiveHeading{
+  padding: 26px 26px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(90deg, rgba(210,230,255,0.07), rgba(255,255,255,0.01));
+  text-align: center;
+}
+
+.ObjectiveNumber{
+  margin: 0 0 8px;
+  font-family: 'LemonMilk', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(210,230,255,0.72);
+  text-align: center;
+}
+
+.ObjectiveHeading h2{
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: center;
+  font-family: 'Belgiano', serif;
+  font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+  line-height: 1.35;
+  font-weight: normal;
+}
+
+.ObjectiveBody{
+  padding: 24px 26px 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.ObjectiveWorks{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ObjectiveWork{
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(18,18,18,0.38);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.ObjectiveWork:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.38);
+}
+
+.ObjectiveWork > iframe,
+.ObjectiveWork > video{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: black;
+  display: block;
+  border: 0;
+}
+
+.PdfCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PdfPreviewLink{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.PdfImagePreview{
+  width: min(100%, 360px);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 16px 38px rgba(0,0,0,0.26);
+}
+
+.PdfImagePreview img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.GalMedia{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  background: black;
+}
+
+.GalMedia img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+.RevealFit{
+  position: relative;
+  overflow: hidden;
+  background: black;
+}
+
+.RevealFit::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+.ObjectiveWork:hover .RevealFit img{
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.ObjectiveWork:hover .RevealFit::after{
+  opacity: 1;
+}
+
+.GalTitle{
+  margin: 12px 0 4px;
+  text-align: center;
+  font-family: monospace;
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+}
+
+.GalDescription{
+  margin: 0;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  opacity: 0.76;
+}
+
+/* ===============================
+   LIGHTBOX / SHADOWBOX
+================================ */
+#Lightbox,
+#PdfModal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+#Lightbox.active,
+#PdfModal.active{
+  display:flex;
+}
+
+#LightboxImg{
+  display: none;
+}
+
+#Lightbox.image-mode #LightboxImg{
+  display: block;
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+  border-radius: 10px;
+}
+
+#PdfViewer{
+  width: min(1200px, 94vw);
+  height: min(88vh, 900px);
+  border: 0;
+  border-radius: 14px;
+  background: #0f0f0f;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+}
+
+#LightboxClose,
+#PdfModalClose{
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 960px){
+  .ObjectiveBody{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px){
+  .ObjectiveWorks{
+    grid-template-columns: 1fr;
+  }
+
+  .ObjectiveHeading,
+  .ObjectiveBody{
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  #PdfViewer{
+    width: 94vw;
+    height: 84vh;
+  }
+}
+
+/* ===============================
+   REDUCED MOTION
+================================ */
+@media (prefers-reduced-motion: reduce){
+  .PageHeader::before,
+  .HeaderInner,
+  .ObjectiveCard{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
